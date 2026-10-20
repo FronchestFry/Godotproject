@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://dfv8gy278y7a3"]
+
+[ext_resource type="PackedScene" uid="uid://q5ewrrojbrhf" path="res://player.tscn" id="1_u52ul"]
+[ext_resource type="PackedScene" uid="uid://eigywx4kxafy" path="res://box_platform.tscn" id="2_vonw3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vonw3"]
+albedo_color = Color(0.59733087, 0.23234773, 0.07088227, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_oi3di"]
+material = SubResource("StandardMaterial3D_vonw3")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0b4ue"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[sub_resource type="Environment" id="Environment_vonw3"]
+glow_intensity = 7.64
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1119
+volumetric_fog_albedo = Color(0.6938876, 0.29056314, 0.107024066, 1)
+volumetric_fog_emission = Color(0.22857675, 0.11519212, 0.10034431, 1)
+
+[node name="Level" type="Node3D" unique_id=1221611049]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1187735042]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("PlaneMesh_oi3di")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=2001683464]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=1117191898]
+shape = SubResource("ConcavePolygonShape3D_0b4ue")
+
+[node name="Player" parent="." unique_id=57929858 instance=ExtResource("1_u52ul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6996155, 0)
+
+[node name="Box Platform" parent="." unique_id=1784923033 instance=ExtResource("2_vonw3")]
+transform = Transform3D(-8.588484e-08, -1.9648161, -0.74698776, 2, -8.742278e-08, 0, -1.6325936e-08, -0.37349388, 3.9296322, 0, 0, -12.679114)
+
+[node name="Box Platform2" parent="." unique_id=446998552 instance=ExtResource("2_vonw3")]
+transform = Transform3D(-5.33708e-08, -1.2209815, 3.1680934, 2, -8.742278e-08, 0, 6.924088e-08, 1.5840467, 2.441963, 4.0325785, 2.2205257, -23.294308)
+
+[node name="Box Platform3" parent="." unique_id=1605457642 instance=ExtResource("2_vonw3")]
+transform = Transform3D(-8.622861e-08, -1.9726806, 0.658882, 2, -8.742278e-08, 0, 1.4400326e-08, 0.329441, 3.9453611, -0.6897564, 2.8072367, -30.488249)
+
+[node name="Box Platform4" parent="." unique_id=1802510432 instance=ExtResource("2_vonw3")]
+transform = Transform3D(-8.080311e-08, -1.8485595, -1.5268629, 2, -8.742278e-08, 0, -3.337065e-08, -0.76343143, 3.697119, -3.4142532, 3.5863295, -41.08267)
+
+[node name="Box Platform5" parent="." unique_id=1209728892 instance=ExtResource("2_vonw3")]
+transform = Transform3D(-8.735858e-08, -1.9985312, -0.15327227, 2, -8.742278e-08, 0, -3.3498688e-09, -0.076636136, 3.9970624, -3.183088, 4.1730404, -50.536682)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=434851249]
+environment = SubResource("Environment_vonw3")
