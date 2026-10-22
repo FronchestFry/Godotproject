@@ -1,2 +1,2 @@
 # Godotproject
-A 3d 1st person project in godot. Likely to be a platformer or parkour game of some kind. Maybe. Still working on what we're doing here, will likely be decided as I go.
+A 3D 1st person platformer made in Godot, featuring elements of the mistborn series' alomancy as movement abilities, letting you soar through the air like Vin and Kliser.
