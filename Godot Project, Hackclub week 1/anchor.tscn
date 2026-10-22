@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dwdhputpumoju"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dni6c"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tillw"]
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vwnqp"]
+albedo_color = Color(0.5757044, 0.5733872, 0, 1)
+metallic = 0.89
+metallic_specular = 0.34
+rim_enabled = true
+rim = 0.63
+rim_tint = 0.66
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fr8iv"]
+material = SubResource("StandardMaterial3D_vwnqp")
+
+[node name="Anchor" type="RigidBody3D" unique_id=443150508]
+mass = 30.0
+physics_material_override = SubResource("PhysicsMaterial_dni6c")
+continuous_cd = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1938974418]
+transform = Transform3D(0.29999998, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, 0, 0, 0)
+shape = SubResource("CylinderShape3D_tillw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1980730703]
+transform = Transform3D(0.29999998, 0, 0, 0, 0.014570381, 0, 0, 0, 0.29999998, 0, 0, 0)
+mesh = SubResource("CylinderMesh_fr8iv")
