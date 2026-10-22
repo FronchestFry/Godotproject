@@ -14,7 +14,7 @@ var rate = 1
 var player_mass = 80
 var pull_strength = 1000
 var pull_damping = 100
-var max_pull_force = 5000
+var max_pull_force = 960
 
 @onready var Head = $Neck/Head
 @onready var Body = $"."
@@ -30,8 +30,7 @@ func _physics_process(delta: float) -> void:
 	#Normal Jump
 	if Input.is_action_pressed("Jump") and is_on_floor():
 		velocity.y += JUMP_FORCE
-		
-	
+
 	#Wall Jump
 	if is_on_wall_only() and Input.is_action_just_pressed("Jump"):
 		#Uppies
@@ -76,8 +75,6 @@ func _physics_process(delta: float) -> void:
 			var force_on_anchor = -dir * force
 			anchor.apply_central_force(force_on_anchor)
 			velocity -= force_on_anchor / player_mass * delta
-			print("Push force: ", force, "  Player velocity: ", velocity)
-		
 	
 	#Regain dash on floor
 	if is_on_floor():
@@ -90,8 +87,13 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= GRAVITY * delta
 	
-	#Glowing anchor lines
-	
+	#Ability to raise or lower potency
+	if Input.is_action_just_pressed("Alo_force_up"):
+		max_pull_force = clamp(max_pull_force + 230, 500, 1420)
+	elif Input.is_action_just_pressed("Alo_force_down"):
+		max_pull_force = clamp(max_pull_force - 230, 500, 1420)
+	$CanvasLayer/ProgressBar.value = max_pull_force
+	$CanvasLayer/Label.text = str(max_pull_force)
 	
 	move_and_slide()
 

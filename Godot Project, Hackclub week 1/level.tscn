@@ -16,10 +16,12 @@ material = SubResource("StandardMaterial3D_vonw3")
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [sub_resource type="Environment" id="Environment_vonw3"]
+glow_enabled = true
 glow_intensity = 7.64
-volumetric_fog_density = 0.1119
-volumetric_fog_albedo = Color(0.6938876, 0.29056314, 0.107024066, 1)
-volumetric_fog_emission = Color(0.22857675, 0.11519212, 0.10034431, 1)
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(0.37530407, 0.37530407, 0.37530407, 1)
+volumetric_fog_emission = Color(0.37659413, 0.66498035, 0.7548994, 1)
+volumetric_fog_emission_energy = 0.2
 
 [sub_resource type="FontFile" id="FontFile_oi3di"]
 cache/0/variation_coordinates = {}
@@ -42,7 +44,7 @@ cache/0/32/0/underline_position = 0.0
 cache/0/32/0/underline_thickness = 0.0
 cache/0/32/0/scale = 1.0
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_1ainy"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_f2txt"]
 
 [node name="Level" type="Node3D" unique_id=1221611049]
 
@@ -115,7 +117,7 @@ transform = Transform3D(0.87464505, 0.48476383, 0, -0.48476383, 0.87464505, 0, 0
 
 [node name="Alomancy Line Drawer" type="MeshInstance3D" parent="." unique_id=787406052 node_paths=PackedStringArray("player", "anchor")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
-mesh = SubResource("ImmediateMesh_1ainy")
+mesh = SubResource("ImmediateMesh_f2txt")
 script = ExtResource("5_f2txt")
 player = NodePath("../Player")
 anchor = NodePath("../Anchor")

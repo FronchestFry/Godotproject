@@ -6,16 +6,53 @@
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_4flbx"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_4flbx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4flbx"]
+albedo_color = Color(2.5027991e-06, 0.72477627, 0.7254356, 1)
+emission_enabled = true
+emission = Color(0.09411765, 0.54509807, 0.54509807, 1)
+emission_energy_multiplier = 5.65
+
+[sub_resource type="SphereMesh" id="SphereMesh_onrkg"]
+material = SubResource("StandardMaterial3D_4flbx")
+
 [node name="Body" type="CharacterBody3D" unique_id=1331633697]
+collision_layer = 2
 script = ExtResource("1_4flbx")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1366935357]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=2028533498]
+offset_right = 250.0
+offset_bottom = 27.0
+min_value = 500.0
+max_value = 1420.0
+value = 500.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=933157514]
+offset_left = 101.0
+offset_right = 141.0
+offset_bottom = 27.0
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1779471878]
 shape = SubResource("CylinderShape3D_sh265")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1111586282]
+[node name="Body" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1111586282]
 mesh = SubResource("CylinderMesh_4flbx")
 
 [node name="Neck" type="Node3D" parent="." unique_id=351600180]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.73208654, -0.39578587)
 
 [node name="Head" type="Camera3D" parent="Neck" unique_id=684461690]
+
+[node name="Hand" type="MeshInstance3D" parent="Neck/Head" unique_id=1066947396]
+transform = Transform3D(0.23030289, -0.07299196, 0.081840254, 0.18082038, 0.10044151, 0, -0.06530376, 0.020697305, 0.28862116, 0.8077637, -0.418805, -0.97013634)
+mesh = SubResource("BoxMesh_4flbx")
+
+[node name="Hand2" type="MeshInstance3D" parent="Neck/Head" unique_id=1254274718]
+transform = Transform3D(0.15353525, -0.11597463, 0.054560173, 0.120546915, 0.15958835, 0, -0.04353584, 0.0328853, 0.1924141, 0.7097217, -0.2210086, -0.9177422)
+mesh = SubResource("SphereMesh_onrkg")

@@ -17,6 +17,8 @@ rim_tint = 0.66
 material = SubResource("StandardMaterial3D_vwnqp")
 
 [node name="Anchor" type="RigidBody3D" unique_id=443150508]
+collision_layer = 128
+collision_mask = 129
 mass = 30.0
 physics_material_override = SubResource("PhysicsMaterial_dni6c")
 continuous_cd = true
