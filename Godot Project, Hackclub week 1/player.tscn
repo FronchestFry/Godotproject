@@ -56,3 +56,13 @@ mesh = SubResource("BoxMesh_4flbx")
 [node name="Hand2" type="MeshInstance3D" parent="Neck/Head" unique_id=1254274718]
 transform = Transform3D(0.15353525, -0.11597463, 0.054560173, 0.120546915, 0.15958835, 0, -0.04353584, 0.0328853, 0.1924141, 0.7097217, -0.2210086, -0.9177422)
 mesh = SubResource("SphereMesh_onrkg")
+
+[node name="Hand3" type="MeshInstance3D" parent="Neck/Head" unique_id=1253549904]
+transform = Transform3D(0.007676762, -0.0057987315, 0.0027280087, 0.0060273455, 0.007979417, 0, -0.002176792, 0.001644265, 0.009620705, 0, 0, -0.743884)
+mesh = SubResource("SphereMesh_onrkg")
+
+[node name="RayCast3D" type="RayCast3D" parent="Neck/Head" unique_id=594635426]
+transform = Transform3D(5, 0, 0, 0, -2.1855695e-07, -5, 0, 5, -2.1855695e-07, 0, 0, -0.18645227)
+collision_mask = 255
+debug_shape_custom_color = Color(0.9225435, 0.33118352, 0.45785475, 1)
+debug_shape_thickness = 5

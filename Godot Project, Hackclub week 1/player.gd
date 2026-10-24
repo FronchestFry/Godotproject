@@ -15,6 +15,9 @@ var player_mass = 80
 var pull_strength = 1000
 var pull_damping = 100
 var max_pull_force = 960
+var max_distance = 20
+var distance = 0
+var coin_pocketed = false
 
 @onready var Head = $Neck/Head
 @onready var Body = $"."
@@ -46,17 +49,11 @@ func _physics_process(delta: float) -> void:
 
 	velocity.x = Horizontal_velocity.x
 	velocity.z = Horizontal_velocity.z
-	
-	#Dash
-	if Input.is_action_just_pressed("Dash") and dash_cooldown == false:
-		#Can't dash until on floor
-		dash_cooldown = true
-		velocity += -Head.get_global_transform().basis.z * DASH_FORCE
-		
+
 	#Ironpulling
-	if Input.is_action_pressed("Pull"):
+	if Input.is_action_pressed("Pull") and not coin_pocketed:
 		var anchor_pull_dir = Body.get_global_position() - anchor.get_global_position()
-		var distance = anchor_pull_dir.length()
+		distance = anchor_pull_dir.length()
 		if distance > 1.5:
 			var dir = anchor_pull_dir / distance
 			var pull_speed = (velocity - anchor.linear_velocity).dot(dir)
@@ -65,9 +62,9 @@ func _physics_process(delta: float) -> void:
 			anchor.apply_central_force(force_on_anchor)
 			velocity -= force_on_anchor / player_mass * delta
 		
-	elif Input.is_action_pressed("Push"):
+	elif Input.is_action_pressed("Push") and not coin_pocketed:
 		var anchor_push_dir = Body.get_global_position() - anchor.get_global_position()
-		var distance = anchor_push_dir.length()
+		distance = anchor_push_dir.length()
 		if distance > 1.5:
 			var dir = anchor_push_dir / distance
 			var push_speed = (anchor.linear_velocity - velocity).dot(dir)
@@ -95,6 +92,21 @@ func _physics_process(delta: float) -> void:
 	$CanvasLayer/ProgressBar.value = max_pull_force
 	$CanvasLayer/Label.text = str(max_pull_force)
 	
+	#pick up/put down coin
+	if Input.is_action_just_pressed("Pocket_unpocket") and (Body.get_global_position() - anchor.get_global_position()).length() <= 5 and coin_pocketed == false:
+		$Neck/Head/RayCast3D.force_raycast_update()
+		if $Neck/Head/RayCast3D.is_colliding():
+			if $Neck/Head/RayCast3D.get_collider() == anchor:
+				coin_pocketed = true
+				anchor.hide()
+				get_parent().get_node('Alomancy Line Drawer').hide()
+	elif Input.is_action_just_pressed("Pocket_unpocket") and coin_pocketed == true:
+			coin_pocketed = false
+			anchor.global_transform = get_global_transform()
+			anchor.show()
+			get_parent().get_node('Alomancy Line Drawer').show()
+
+
 	move_and_slide()
 
 func _ready() -> void:
@@ -108,4 +120,4 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		Body.rotate_y(-event.relative.x * SENSITIVITY)
 		Head.rotate_x(-event.relative.y * SENSITIVITY)
-		Head.rotation.x = clamp(Head.rotation.x, deg_to_rad(-70), deg_to_rad(70))
+		Head.rotation.x = clamp(Head.rotation.x, deg_to_rad(-90), deg_to_rad(90))
