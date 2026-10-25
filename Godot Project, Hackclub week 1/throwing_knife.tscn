@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://c2fww1wovprd6"]
+
+[ext_resource type="Script" uid="uid://dsysrv1cjnj8x" path="res://Projectile.gd" id="1_31j2r"]
+[ext_resource type="PackedScene" uid="uid://4wv0qdfrdo8q" path="res://Throwing Knife.glb" id="1_ipygg"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_31j2r"]
+bounce = 0.4
+absorbent = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ipygg"]
+size = Vector3(0.17053223, 1.7081013, 0.29162598)
+
+[node name="Knife" type="RigidBody3D" unique_id=1699719335]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7730342)
+collision_layer = 128
+collision_mask = 129
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_31j2r")
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 4
+linear_damp = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=222155977]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 4.262896e-09, 0.897648)
+shape = SubResource("BoxShape3D_ipygg")
+
+[node name="Knife Model" parent="." unique_id=1338173300 instance=ExtResource("1_ipygg")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 1.4707034)
+
+[node name="Bullet Hitbox" type="Area3D" parent="." unique_id=557232997]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4324351)
+script = ExtResource("1_31j2r")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Bullet Hitbox" unique_id=1610470116]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 4.0084838e-09, 0.42881948)
+shape = SubResource("BoxShape3D_ipygg")

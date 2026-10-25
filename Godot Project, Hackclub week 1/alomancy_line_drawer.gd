@@ -2,6 +2,7 @@ extends MeshInstance3D
 
 @export var player: Node3D
 @export var anchor: Node3D
+var orb
 
 
 
@@ -9,7 +10,7 @@ var line_mesh := ImmediateMesh.new()
 var line_material := StandardMaterial3D.new()
 
 func _ready() -> void:
-	player = player.get_node('Neck/Head/Hand2')
+	orb = player.get_node('Neck/Head/Hand/Orb')
 	mesh = line_mesh
 	
 	line_material.albedo_color = Color.AQUA
@@ -18,8 +19,12 @@ func _ready() -> void:
 	line_material.emission = Color.CORNFLOWER_BLUE
 
 func _process(delta: float) -> void:
-	line_mesh.clear_surfaces()
-	line_mesh.surface_begin(Mesh.PRIMITIVE_LINES, line_material)
-	line_mesh.surface_add_vertex(to_local(player.global_position))
-	line_mesh.surface_add_vertex(to_local(anchor.global_position))
-	line_mesh.surface_end()
+	if player.alo_equipped and not player.coin_pocketed:
+		self.show()
+		line_mesh.clear_surfaces()
+		line_mesh.surface_begin(Mesh.PRIMITIVE_LINES, line_material)
+		line_mesh.surface_add_vertex(to_local(orb.global_position))
+		line_mesh.surface_add_vertex(to_local(anchor.global_position))
+		line_mesh.surface_end()
+	else:
+		self.hide()

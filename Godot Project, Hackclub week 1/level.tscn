@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bwq28gw1t77dm" path="res://Tutorialtext.gd" id="5_1ainy"]
 [ext_resource type="Script" uid="uid://dyuc3w2rnnmff" path="res://alomancy_line_drawer.gd" id="5_f2txt"]
 [ext_resource type="Script" uid="uid://dkx8wowdogp5m" path="res://tuttext_2.gd" id="6_1ainy"]
+[ext_resource type="PackedScene" uid="uid://d1wwi1k6570i3" path="res://enemy.tscn" id="9_i2t4f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vonw3"]
 albedo_texture = ExtResource("1_n6hdu")
@@ -34,12 +35,21 @@ volumetric_fog_emission_energy = 0.2
 [node name="Platforms" type="Node3D" parent="." unique_id=1551751322]
 
 [node name="Runway" type="MeshInstance3D" parent="Platforms" unique_id=1187735042]
-transform = Transform3D(19.529505, 0, 0, 0, 1, 0, 0, 0, 147.28972, 0, 0, 93.29895)
+transform = Transform3D(19.529505, 0, 0, 0, 1, 0, 0, 0, 59.62329, 0, 0, 48.296547)
 mesh = SubResource("BoxMesh_oi3di")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Platforms/Runway" unique_id=1382569226]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/Runway/StaticBody3D" unique_id=1635055431]
+shape = SubResource("ConcavePolygonShape3D_vonw3")
+
+[node name="Runway2" type="MeshInstance3D" parent="Platforms" unique_id=1362817494]
+transform = Transform3D(19.529505, 0, 0, 0, 1, 0, 0, 0, 26.087784, 0, 0, 105.17317)
+mesh = SubResource("BoxMesh_oi3di")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platforms/Runway2" unique_id=635220337]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/Runway2/StaticBody3D" unique_id=911515756]
 shape = SubResource("ConcavePolygonShape3D_vonw3")
 
 [node name="Spawn platform" type="MeshInstance3D" parent="Platforms" unique_id=518514132]
@@ -91,3 +101,16 @@ script = ExtResource("6_1ainy")
 [node name="Label3D" type="Label3D" parent="Texts" unique_id=16467916]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 41)
 text = "Pocket thy coin with ('E') and continue down the path"
+
+[node name="Label3D2" type="Label3D" parent="Texts" unique_id=1668730099]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 4, 63.96622)
+text = "Red creatures like this are ENEMIES.
+
+Press ('2') to equip a throwing knife, and left click to throw it.
+
+You can swap back to your powers by pressing ('1') "
+
+[node name="Enemies" type="Node3D" parent="." unique_id=1433678896]
+
+[node name="Enemy" parent="Enemies" unique_id=1576963093 instance=ExtResource("9_i2t4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0720663, 66.814514)

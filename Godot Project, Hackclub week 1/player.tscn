@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://q5ewrrojbrhf"]
 
 [ext_resource type="Script" uid="uid://c12ma08j64bma" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://c2fww1wovprd6" path="res://throwing_knife.tscn" id="2_i3pqv"]
+[ext_resource type="PackedScene" uid="uid://4wv0qdfrdo8q" path="res://Throwing Knife.glb" id="2_onrkg"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sh265"]
 
@@ -20,6 +22,7 @@ material = SubResource("StandardMaterial3D_4flbx")
 [node name="Body" type="CharacterBody3D" unique_id=1331633697]
 collision_layer = 2
 script = ExtResource("1_4flbx")
+knife_scene = ExtResource("2_i3pqv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1366935357]
 
@@ -49,16 +52,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.73208654, -0.39578587)
 
 [node name="Head" type="Camera3D" parent="Neck" unique_id=684461690]
 
-[node name="Hand" type="MeshInstance3D" parent="Neck/Head" unique_id=1066947396]
+[node name="Throwing Knife" parent="Neck/Head" unique_id=1338173300 instance=ExtResource("2_onrkg")]
+transform = Transform3D(0.66464585, 0.1836931, 0.12042775, -0.21374078, 0.6293118, 0.21973085, -0.050605215, -0.24540503, 0.6536173, 0.9441371, -0.60577, -0.84638935)
+visible = false
+
+[node name="Hand" type="Node3D" parent="Neck/Head" unique_id=1334704540]
 transform = Transform3D(0.23030289, -0.07299196, 0.081840254, 0.18082038, 0.10044151, 0, -0.06530376, 0.020697305, 0.28862116, 0.8077637, -0.418805, -0.97013634)
+
+[node name="Rectangle" type="MeshInstance3D" parent="Neck/Head/Hand" unique_id=1066947396]
+transform = Transform3D(0.99999994, 3.7252903e-09, -1.4901161e-08, 7.4505806e-08, 1, -2.9802322e-08, 1.4901161e-08, -7.450581e-09, 0.9999999, 0, 0, 0)
 mesh = SubResource("BoxMesh_4flbx")
 
-[node name="Hand2" type="MeshInstance3D" parent="Neck/Head" unique_id=1254274718]
-transform = Transform3D(0.15353525, -0.11597463, 0.054560173, 0.120546915, 0.15958835, 0, -0.04353584, 0.0328853, 0.1924141, 0.7097217, -0.2210086, -0.9177422)
+[node name="Orb" type="MeshInstance3D" parent="Neck/Head/Hand" unique_id=1254274718]
+transform = Transform3D(0.6666666, 1.3038516e-08, 0, 6.7055225e-08, 1.5888685, -2.9802322e-08, 0, 7.450581e-09, 0.6666666, 0.108496904, 1.7739477, 0.07887006)
 mesh = SubResource("SphereMesh_onrkg")
 
-[node name="Hand3" type="MeshInstance3D" parent="Neck/Head" unique_id=1253549904]
-transform = Transform3D(0.007676762, -0.0057987315, 0.0027280087, 0.0060273455, 0.007979417, 0, -0.002176792, 0.001644265, 0.009620705, 0, 0, -0.743884)
+[node name="Eye dot" type="MeshInstance3D" parent="Neck/Head" unique_id=1253549904]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, -1.1857352)
 mesh = SubResource("SphereMesh_onrkg")
 
 [node name="RayCast3D" type="RayCast3D" parent="Neck/Head" unique_id=594635426]

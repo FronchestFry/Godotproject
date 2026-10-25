@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://d4gsvdb46fmhb"]
+
+[ext_resource type="Script" uid="uid://cgp1ip1hvynu8" path="res://enemy.gd" id="1_muk7c"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7xaro"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7xaro"]
+albedo_color = Color(0.82978576, 0, 0.18025485, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7k104"]
+material = SubResource("StandardMaterial3D_7xaro")
+
+[node name="Enemy" type="Node3D" unique_id=1576963093 groups=["enemies"]]
+script = ExtResource("1_muk7c")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=2032280532 groups=["enemies"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=361824369 groups=["enemies"]]
+shape = SubResource("CylinderShape3D_7xaro")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/CollisionShape3D" unique_id=1872647652 groups=["enemies"]]
+mesh = SubResource("CylinderMesh_7k104")

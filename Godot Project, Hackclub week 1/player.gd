@@ -18,7 +18,11 @@ var max_pull_force = 960
 var max_distance = 20
 var distance = 0
 var coin_pocketed = false
+var alo_equipped = true
+var knives_equipped = false
 
+
+@export var knife_scene : PackedScene
 @onready var Head = $Neck/Head
 @onready var Body = $"."
 @onready var anchor = get_parent().get_node('Anchor')
@@ -51,7 +55,7 @@ func _physics_process(delta: float) -> void:
 	velocity.z = Horizontal_velocity.z
 
 	#Ironpulling
-	if Input.is_action_pressed("Pull") and not coin_pocketed:
+	if Input.is_action_pressed("Pull") and not coin_pocketed  and alo_equipped:
 		var anchor_pull_dir = Body.get_global_position() - anchor.get_global_position()
 		distance = anchor_pull_dir.length()
 		if distance > 1.5:
@@ -62,7 +66,7 @@ func _physics_process(delta: float) -> void:
 			anchor.apply_central_force(force_on_anchor)
 			velocity -= force_on_anchor / player_mass * delta
 		
-	elif Input.is_action_pressed("Push") and not coin_pocketed:
+	elif Input.is_action_pressed("Push") and not coin_pocketed and alo_equipped:
 		var anchor_push_dir = Body.get_global_position() - anchor.get_global_position()
 		distance = anchor_push_dir.length()
 		if distance > 1.5:
@@ -72,6 +76,14 @@ func _physics_process(delta: float) -> void:
 			var force_on_anchor = -dir * force
 			anchor.apply_central_force(force_on_anchor)
 			velocity -= force_on_anchor / player_mass * delta
+	
+	#Throwing Knife Loadout
+	elif Input.is_action_just_pressed("Pull") and knives_equipped:
+		var thrown_knife = knife_scene.instantiate()
+		get_tree().get_root().add_child(thrown_knife)
+		thrown_knife.global_position = $"Neck/Head/Eye dot".global_position
+		thrown_knife.global_rotation = $"Neck/Head/Eye dot".global_rotation
+		thrown_knife.linear_velocity = -Head.global_transform.basis.z * 50
 	
 	#Regain dash on floor
 	if is_on_floor():
@@ -106,6 +118,18 @@ func _physics_process(delta: float) -> void:
 			anchor.show()
 			get_parent().get_node('Alomancy Line Drawer').show()
 
+#Equipment changes
+	if Input.is_action_just_pressed("Equip Alo"):
+				alo_equipped = true
+				knives_equipped = false
+				$Neck/Head/Hand.show()
+				$"Neck/Head/Throwing Knife".hide()
+				
+	elif Input.is_action_just_pressed("Equip Knives"):
+				alo_equipped = false
+				knives_equipped = true
+				$Neck/Head/Hand.hide()
+				$"Neck/Head/Throwing Knife".show()
 
 	move_and_slide()
 
