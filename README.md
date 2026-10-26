@@ -1,2 +1,1 @@
-# Godotproject
-A 3D 1st person platformer made in Godot, featuring elements of the mistborn series' alomancy as movement abilities, letting you soar through the air like Vin and Kliser.
+The beginnings of a first person combat game, featuring throwing knives, foggy maps, and push-pull powers inspired by the MISTBORN trilogy. While the enemies aren't fully fledged and hostile, this tutorial part of the game should be enough to let you try out the mechanics I spent the week implementing, and does have most of the movement mechanics functional.
