@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c2fww1wovprd6"]
 
 [ext_resource type="Script" uid="uid://dsysrv1cjnj8x" path="res://Projectile.gd" id="1_31j2r"]
-[ext_resource type="PackedScene" uid="uid://4wv0qdfrdo8q" path="res://Throwing Knife.glb" id="1_ipygg"]
+[ext_resource type="PackedScene" uid="uid://cwqig22kwm8gk" path="res://throwing_knife_model.tscn" id="1_nj4g8"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_31j2r"]
 bounce = 0.4
@@ -25,7 +25,7 @@ linear_damp = 1.0
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 4.262896e-09, 0.897648)
 shape = SubResource("BoxShape3D_ipygg")
 
-[node name="Knife Model" parent="." unique_id=1338173300 instance=ExtResource("1_ipygg")]
+[node name="Throwing Knife Model" parent="." unique_id=2090902789 instance=ExtResource("1_nj4g8")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 1.4707034)
 
 [node name="Bullet Hitbox" type="Area3D" parent="." unique_id=557232997]

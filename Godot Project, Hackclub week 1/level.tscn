@@ -104,11 +104,13 @@ text = "Pocket thy coin with ('E') and continue down the path"
 
 [node name="Label3D2" type="Label3D" parent="Texts" unique_id=1668730099]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 4, 63.96622)
-text = "Red creatures like this are ENEMIES.
+text = "Red-eyed creatures like this are ENEMIES.
 
 Press ('2') to equip a throwing knife, and left click to throw it.
 
-You can swap back to your powers by pressing ('1') "
+You can swap back to your powers by pressing ('1') 
+
+This one is immoble, so you are safe, but future ones may not be."
 
 [node name="Enemies" type="Node3D" parent="." unique_id=1433678896]
 

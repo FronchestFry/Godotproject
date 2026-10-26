@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://cbpxplf5eqrgq"]
+
+[ext_resource type="Script" uid="uid://b0cdeataiwcbl" path="res://start_game.gd" id="1_i26rj"]
+[ext_resource type="PackedScene" uid="uid://dfv8gy278y7a3" path="res://level.tscn" id="2_eiy7p"]
+[ext_resource type="Texture2D" uid="uid://bsij7pnrcnd0j" path="res://Screenshot from 2026-10-22 19-34-11.png" id="3_h7a2f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_eiy7p"]
+font_size = 105
+outline_size = 26
+outline_color = Color(0.0847772, 0.2929098, 0.23891845, 1)
+
+[node name="Control" type="Control" unique_id=1422795149]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start Game" type="Button" parent="." unique_id=236432290]
+layout_mode = 0
+offset_left = 526.0
+offset_top = 362.0
+offset_right = 622.0
+offset_bottom = 393.0
+text = "Start Game"
+script = ExtResource("1_i26rj")
+level = ExtResource("2_eiy7p")
+
+[node name="Label" type="Label" parent="." unique_id=202504037]
+layout_mode = 0
+offset_left = 322.0
+offset_top = 157.0
+offset_right = 829.0
+offset_bottom = 301.0
+text = "FOGSIRED"
+label_settings = SubResource("LabelSettings_eiy7p")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1104838460]
+z_index = -1
+layout_mode = 0
+offset_right = 1155.0
+offset_bottom = 648.0
+mouse_filter = 2
+texture = ExtResource("3_h7a2f")
+expand_mode = 1
+
+[connection signal="pressed" from="Start Game" to="Start Game" method="_on_pressed"]

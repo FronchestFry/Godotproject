@@ -11,13 +11,15 @@ config_version=5
 [application]
 
 config/name="Godot Project; Week 1!!!"
-run/main_scene="uid://dfv8gy278y7a3"
+run/main_scene="uid://cbpxplf5eqrgq"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
 window/size/mode=3
+window/stretch/mode="canvas_items"
+window/stretch/aspect="ignore"
 
 [editor_plugins]
 

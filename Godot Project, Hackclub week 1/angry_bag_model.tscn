@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cmiryviqn1e27"]
+
+[ext_resource type="PackedScene" uid="uid://d2f4mc5ouocx8" path="res://Angry bag.glb" id="1_fwfcn"]
+
+[node name="Angry bag Model" unique_id=2092769775 instance=ExtResource("1_fwfcn")]

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cwqig22kwm8gk"]
+
+[ext_resource type="PackedScene" uid="uid://4wv0qdfrdo8q" path="res://Throwing Knife.glb" id="1_rafns"]
+[ext_resource type="Material" uid="uid://r3enjjwlk1ub" path="res://Blademetal.tres" id="2_byywo"]
+[ext_resource type="Texture2D" uid="uid://iscnka1geq2s" path="res://Shipping container texture.png" id="2_fgffa"]
+[ext_resource type="Material" uid="uid://vfropex4nwh2" path="res://Blue.tres" id="4_4uvui"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4uvui"]
+albedo_color = Color(0.47159016, 0.17917877, 0.11096559, 1)
+albedo_texture = ExtResource("2_fgffa")
+
+[node name="Throwing Knife" unique_id=2090902789 instance=ExtResource("1_rafns")]
+
+[node name="Cylinder" parent="." index="0" unique_id=1988797598]
+surface_material_override/0 = SubResource("StandardMaterial3D_4uvui")
+
+[node name="Cylinder_001" parent="." index="1" unique_id=31061298]
+surface_material_override/0 = ExtResource("2_byywo")
+
+[node name="Icosphere" parent="." index="2" unique_id=193585781]
+surface_material_override/0 = ExtResource("4_4uvui")
+
+[node name="Torus_001" parent="." index="3" unique_id=1473858641]
+surface_material_override/0 = ExtResource("2_byywo")
